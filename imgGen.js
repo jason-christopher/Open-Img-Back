@@ -10,7 +10,6 @@ const openai = new OpenAIApi(configuration);
 async function imgGen(req, res, next) {
   try{
       let createPrompt = req.query.prompt;
-      //let generator = await axios.get(`https://api.openai.com/v1/images/generations?api_key=${process.env.MOVIE_API_KEY}&query=${searchedCity}`);
       let generator = await openai.createImage({
         prompt: `${createPrompt}`,
         n: 1,
@@ -24,14 +23,5 @@ async function imgGen(req, res, next) {
     }).catch(next);
   }
 }
-
-
-// class Img {
-//   constructor(obj) {
-//     this.tbd = obj.tbd;
-//     this.tbd = obj.tbd;
-//     this.tbd = obj.tbd;
-//   }
-// }
 
 module.exports = imgGen;
